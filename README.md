@@ -24,10 +24,8 @@
   <!-- <img alt="Github stars" src="https://img.shields.io/github/stars/{{YOUR_GITHUB_USERNAME}}/letmeask?color=56BEB8" /> -->
 </p>
 
-Status
-
 <h4 align="center"> 
-	🚧  Letmeask 🚀 Under construction...  🚧
+	🚧  Under construction...  🚧
 </h4> 
 
 <hr>
@@ -51,7 +49,7 @@ Letmeask - App developed to help people select the best questions asked by your 
 ## :sparkles: Features ##
 
 :heavy_check_mark: Authentication;\
-:heavy_check_mark: Coming...;\
+:heavy_check_mark: Coming...
 <!-- :heavy_check_mark: Feature 3; -->
 
 ## :rocket: Technologies ##
