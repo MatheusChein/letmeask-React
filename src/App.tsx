@@ -1,12 +1,22 @@
-import { Button } from './components/Button'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+import { AuthContextProvider } from './contexts/AuthContext';
+
+import { Home } from './pages/Home'
+import { NewRoom } from './pages/NewRoom';
 
 function App() {
+  
   return (
     <>
-      <h1>Hellos</h1>
-      <Button text='Clique aqui'/>
-      <Button text='Pressione na localidade'/>
-      <Button text='Bata na tela'/>
+      <Router>
+        <AuthContextProvider>
+          <Switch>
+            <Route path='/' exact component={Home}/>
+            <Route path='/rooms/new' component={NewRoom}/>
+          </Switch>
+        </AuthContextProvider>
+      </Router>
     </>
   );
 }
