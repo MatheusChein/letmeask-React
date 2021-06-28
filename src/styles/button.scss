@@ -33,4 +33,13 @@
     opacity: 0.6;
     cursor: not-allowed;
   }
+
+  &.confirm {
+    background: #E73F5D;
+  }
+
+  &.cancel {
+    background: #DBDCDD;
+    color: #737380;
+  }
 }

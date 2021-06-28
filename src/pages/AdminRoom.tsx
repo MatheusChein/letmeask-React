@@ -1,13 +1,15 @@
 import { useEffect, useState, Fragment } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 
 import { Button } from '../components/Button'
 import { RoomCode } from '../components/RoomCode'
 import { Question as QuestionComponent} from '../components/Question'
 import { CloseQuestionModal } from '../components/CloseQuestionModal'
+import { EndRoomModal } from '../components/EndRoomModal'
 
 import { useAuth } from '../hooks/useAuth'
 import { useRoom } from '../hooks/useRoom'
+import { useTheme } from '../hooks/useTheme'
 
 import { database } from '../services/firebase'
 
@@ -27,12 +29,16 @@ export function AdminRoom() {
   const roomId = params.id;
 
   const [questionIdModalOpen, setQuestionIdModalOpen] = useState<string | undefined>()
+  const [isEndRoomModalOpen, setIsEndRoomModalOpen] = useState(false)
 
   const { questions, roomTitle } = useRoom(roomId)
 
   const history = useHistory()
   
-  // const { user } = useAuth()
+  const { user } = useAuth()
+
+  const { theme, toggleTheme } = useTheme()
+
 
   // useEffect(() => {
   //   if (!user) {
@@ -40,12 +46,23 @@ export function AdminRoom() {
   //   }
   // }, [user, history])
 
+
+  function handleToggleRoomVision() {
+    history.push(`/rooms/${roomId}`)
+  }
+
   async function handleEndRoom() {
     await database.ref(`/rooms/${roomId}`).update({
       endedAt: new Date()
     });
 
+    handleCloseEndRoomModal()
+
     history.push('/')
+  }
+
+  function handleCloseEndRoomModal() {
+    setIsEndRoomModalOpen(false)
   }
 
   async function handleCheckQuestionAsAnswered(questionId: string) {
@@ -70,26 +87,44 @@ export function AdminRoom() {
     setQuestionIdModalOpen(undefined)
   }
 
+
   return (
-    <div id="page-room">
+    <div id="page-room" className={theme}>
       <header>
         <div className="content">
-          <img src={logoImg} alt="letmeask" />
+          <Link to="/">
+            <img src={logoImg} alt="letmeask" />
+          </Link>
           <div>
             <RoomCode code={roomId}/>
             <Button 
               isOutlined
-              onClick={handleEndRoom}
+              onClick={handleToggleRoomVision}
+            >
+              Visão do usuário 
+            </Button>
+            <Button 
+              isOutlined
+              onClick={() => setIsEndRoomModalOpen(true)}
             >
               Encerrar sala
             </Button>
+
+            <EndRoomModal 
+              isOpen={isEndRoomModalOpen}
+              handleEndRoom={handleEndRoom}
+              onRequestClose={handleCloseEndRoomModal}
+
+            />
+
+            <Button onClick={toggleTheme}>Switch Theme</Button>
           </div>
         </div>
       </header>
 
       <main>
         <div className="room-title">
-          <h1>Sala {roomTitle}</h1>
+          <h1 className={theme}>Sala {roomTitle}</h1>
           {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
         </div>
 

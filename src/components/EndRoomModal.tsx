@@ -6,14 +6,14 @@ import deleteImg from '../assets/images/delete.svg'
 
 import '../styles/modal.scss'
 
-type CloseQuestionModalProps = {
+type EndRoomModalProps = {
   isOpen: boolean;
   onRequestClose: () => void;
-  questionId: string;
-  handleDeleteQuestion: (questionId: string) => Promise<void>
+  handleEndRoom: () => Promise<void>
 }
 
-export function CloseQuestionModal({ isOpen, onRequestClose, handleDeleteQuestion, questionId }: CloseQuestionModalProps) {
+
+export function EndRoomModal({ isOpen, onRequestClose, handleEndRoom }: EndRoomModalProps) {
   return (
     <Modal
       isOpen={isOpen}
@@ -22,10 +22,10 @@ export function CloseQuestionModal({ isOpen, onRequestClose, handleDeleteQuestio
       className='react-modal'
     >
       <img src={deleteImg} alt="" />
-      <h1>Excluir pergunta</h1>
-      <p>Tem certeza que você deseja excluir esta pergunta?</p>
+      <h1>Encerrar sala</h1>
+      <p>Tem certeza que você deseja encerrar esta sala?</p>
       <div>
-        <Button className='button confirm' onClick={() => handleDeleteQuestion(questionId)}>Sim, excluir</Button>
+        <Button className='button confirm' onClick={() => handleEndRoom()}>Sim, encerrar</Button>
         <Button className='button cancel' onClick={onRequestClose}>Cancelar</Button>
       </div>
   </Modal>

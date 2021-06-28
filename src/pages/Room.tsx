@@ -1,11 +1,12 @@
 import { FormEvent, useState, useEffect } from 'react'
-import { useHistory, useParams } from 'react-router-dom'
+import { Link, useHistory, useParams } from 'react-router-dom'
 
 import { Button } from '../components/Button'
 import { RoomCode } from '../components/RoomCode'
 
 import { useAuth } from '../hooks/useAuth'
 import { useRoom } from '../hooks/useRoom'
+import { useTheme } from '../hooks/useTheme'
 
 import { database } from '../services/firebase'
 
@@ -26,15 +27,33 @@ export function Room() {
 
   const history = useHistory()
   
-  const { user } = useAuth()
+  const { user, signInWithGoogle } = useAuth()
+
+  const { theme, toggleTheme } = useTheme()
+
 
   const [newQuestion, setNewQuestion] = useState('')
-  
+  const [isUserAdmin, setIsUserAdmin] = useState(false)
+
   useEffect(() => {
-    if (!user) {
-      history.push('/')
+    async function handleIsUserAdmin() {
+      const roomRef = database.ref(`rooms/${roomId}`);
+
+      roomRef.once('value', room => {
+        const userId = room.val().authorId
+
+        if (userId === user?.id) {
+          setIsUserAdmin(true)
+        }
+      })
     }
-  }, [user, history])
+
+    handleIsUserAdmin()
+  }, [user, roomId])
+
+  function handleToggleRoomVision() {
+    history.push(`/admin/rooms/${roomId}`)
+  }
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
@@ -72,18 +91,39 @@ export function Room() {
     }
   }
 
+  async function handleSignIn() {
+    if (!user) {
+      await signInWithGoogle()
+    }
+    
+    history.push(`/rooms/${roomId}`)
+  }
+
   return (
-    <div id="page-room">
+    <div id="page-room" className={theme}>
       <header>
         <div className="content">
-          <img src={logoImg} alt="letmeask" />
-          <RoomCode code={roomId}/>
+          <Link to="/">
+            <img src={logoImg} alt="letmeask" />
+          </Link>
+          <div>
+            <RoomCode code={roomId}/>
+            {isUserAdmin && (
+              <Button 
+                isOutlined
+                onClick={handleToggleRoomVision}
+              >
+                Visão do admin 
+              </Button>
+            )}
+            <Button onClick={toggleTheme}>Switch Theme</Button>
+          </div>
         </div>
       </header>
 
       <main>
         <div className="room-title">
-          <h1>Sala {roomTitle}</h1>
+          <h1 className={theme}>Sala {roomTitle}</h1>
           {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}
         </div>
 
@@ -97,10 +137,10 @@ export function Room() {
             {user ? (
               <div className="user-info">
                 <img src={user.avatar} alt={user.name} />
-                <span>{user.name}</span>
+                <span className={theme}>{user.name}</span>
               </div>
             ) : (
-              <span>Para enviar uma pergunta, <button>faça seu login</button></span>
+              <span className={theme}>Para enviar uma pergunta, <button onClick={handleSignIn}>faça seu login</button></span>
             )}
             <Button type='submit' disabled={!user}>
               Enviar pergunta

@@ -21,7 +21,7 @@ type AuthContextProviderProps = {
 
 export function AuthContextProvider({ children }: AuthContextProviderProps) {
   const [user, setUser] = useState<User>()
-  const [loading, setLoading] = useState(true)
+  // const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
@@ -38,7 +38,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
           avatar: photoURL,
         })
 
-        setLoading(false)
+        // setLoading(false)
       }
     })
 
@@ -46,6 +46,7 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
       unsubscribe()
     }
   }, [])
+
 
   async function signInWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -66,6 +67,10 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
       })
     }
   }
+
+  // if (loading) {
+  //   return <p>Carregando...</p>
+  // }
 
   return (
     <AuthContext.Provider value={{ user, signInWithGoogle }}>

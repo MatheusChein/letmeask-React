@@ -15,6 +15,7 @@ import logoImg from '../assets/images/logo.svg'
 import googleIconImg from '../assets/images/google-icon.svg'
 
 import '../styles/auth.scss'
+import { useEffect } from 'react';
 
 const schema = Yup.object().shape({
   roomCode: Yup.string().required('Campo obrigatório')
@@ -28,8 +29,9 @@ export function Home() {
   })
   
   const { signInWithGoogle, user } = useAuth()
-  const { theme, toggleTheme } = useTheme()
   
+  const { theme, toggleTheme } = useTheme()
+
   async function handleCreateRoom() {
     if (!user) {
       await signInWithGoogle()
@@ -68,8 +70,10 @@ export function Home() {
         <p>Tire as dúvidas da sua audiência em tempo real</p>
       </aside>
       <main>
+        <header>
+          <Button onClick={toggleTheme}>Switch Theme</Button>
+        </header>
         <div className='main-content'>
-          {/* <button onClick={toggleTheme}>Toggle</button> */}
           <img src={logoImg} alt="letmeask" />
           <button onClick={handleCreateRoom} className='create-room'>
             <img src={googleIconImg} alt="Logo do Google" />
