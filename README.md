@@ -6,7 +6,9 @@
   <!-- <a href="https://letmeask.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">Letmeask</h1>
+<p align="center">
+  <img alt="Letmeask" src=".github/logo.svg" width="160px">
+</p>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/MatheusChein/letmeask-React?color=56BEB8">
@@ -28,6 +30,10 @@
 	🚧  Under construction...  🚧
 </h4> 
 
+<h1 align="center">
+    <img alt="Web" src=".github/app.gif" width="900px">
+</h1>
+
 <hr>
 
 <p align="center">
@@ -36,6 +42,7 @@
   <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
+  <a href="#bookmark-layout">Layout</a> &#xa0; | &#xa0;
   <a href="#memo-license">License</a> &#xa0; | &#xa0;
   <a href="https://github.com/MatheusChein" target="_blank">Author</a>
 </p>
@@ -44,20 +51,27 @@
 
 ## :dart: About ##
 
-Letmeask - App developed to help people select the best questions asked by your audience while live streaming your coding (or any other) skills! Project created during the Next Level Week Together event, hosted by [Rocketseat](https://rocketseat.com.br/)
+Letmeask - App developed in React to help people select the best questions asked by your audience while live streaming your coding (or any other) skills! Project created during the Next Level Week Together event, hosted by [Rocketseat](https://rocketseat.com.br/)
 
 ## :sparkles: Features ##
 
-:heavy_check_mark: Authentication;\
-:heavy_check_mark: Coming...
-<!-- :heavy_check_mark: Feature 3; -->
+:heavy_check_mark: Authentication with Google;\
+:heavy_check_mark: Dark Theme;\
+:heavy_check_mark: Real time database;\
+:heavy_check_mark: Modals;\
+:heavy_check_mark: Context API;\
+:heavy_check_mark: Custom React Hooks;\
+
+## 🚧 Coming Soon...
+
+:thought_balloon: Responsiveness\
 
 ## :rocket: Technologies ##
 
 The following tools were used in this project:
 
 - [React](https://pt-br.reactjs.org/)
-- [Node.js](https://nodejs.org/en/)
+- [SASS](https://sass-lang.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Firebase](https://firebase.google.com/)
 
@@ -82,6 +96,14 @@ $ yarn start
 
 # The server will initialize in the <http://localhost:3000>
 ```
+
+## :bookmark: Layout
+
+You can take a look at the layout of the project in the link below:
+
+- [Layout Web](https://www.figma.com/file/u0BQK8rCf2KgzcukdRRCWh/Letmeask/duplicate) 
+
+You must have a [Figma](http://figma.com/) account.
 
 ## :memo: License ##
 
