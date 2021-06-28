@@ -11,6 +11,7 @@ import { useTheme } from '../hooks/useTheme'
 
 import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
+import darkLogoImg from '../assets/images/dark-logo.svg'
 
 import '../styles/auth.scss'
 
@@ -51,7 +52,7 @@ export function NewRoom() {
           <Button onClick={toggleTheme}>Switch Theme</Button>
         </header>
         <div className='main-content'>
-          <img src={logoImg} alt="letmeask" />
+          <img src={theme === 'dark' ? darkLogoImg : logoImg} alt="letmeask" />
           <h2>Criar uma nova sala</h2>
           <form onSubmit={handleCreateRoom}>
             <input 

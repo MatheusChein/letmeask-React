@@ -26,10 +26,14 @@
   justify-content: center;
   align-items: center;
 
-  img {
+  svg {
     height: 48px;
     width: 48px;
     margin-bottom: 24px;
+
+    path {
+    stroke: #E73F5D;
+    }
   }
 
   h1 {

@@ -12,10 +12,10 @@ import { database } from '../services/firebase'
 
 import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
+import darkLogoImg from '../assets/images/dark-logo.svg'
 import googleIconImg from '../assets/images/google-icon.svg'
 
 import '../styles/auth.scss'
-import { useEffect } from 'react';
 
 const schema = Yup.object().shape({
   roomCode: Yup.string().required('Campo obrigatório')
@@ -74,7 +74,7 @@ export function Home() {
           <Button onClick={toggleTheme}>Switch Theme</Button>
         </header>
         <div className='main-content'>
-          <img src={logoImg} alt="letmeask" />
+          <img src={theme === 'dark' ? darkLogoImg : logoImg} alt="letmeask" />
           <button onClick={handleCreateRoom} className='create-room'>
             <img src={googleIconImg} alt="Logo do Google" />
             Crie sua sala com o Google

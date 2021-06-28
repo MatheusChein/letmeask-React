@@ -11,6 +11,7 @@ import { useTheme } from '../hooks/useTheme'
 import { database } from '../services/firebase'
 
 import logoImg from '../assets/images/logo.svg'
+import darkLogoImg from '../assets/images/dark-logo.svg'
 
 import '../styles/room.scss'
 import { Question as QuestionComponent} from '../components/Question'
@@ -104,7 +105,7 @@ export function Room() {
       <header>
         <div className="content">
           <Link to="/">
-            <img src={logoImg} alt="letmeask" />
+            <img src={theme === 'dark' ? darkLogoImg : logoImg} alt="letmeask" />
           </Link>
           <div>
             <RoomCode code={roomId}/>

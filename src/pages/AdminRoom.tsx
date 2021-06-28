@@ -14,6 +14,8 @@ import { useTheme } from '../hooks/useTheme'
 import { database } from '../services/firebase'
 
 import logoImg from '../assets/images/logo.svg'
+import darkLogoImg from '../assets/images/dark-logo.svg'
+
 import deleteImg from '../assets/images/delete.svg'
 import checkImg from '../assets/images/check.svg'
 import answerImg from '../assets/images/answer.svg'
@@ -93,7 +95,7 @@ export function AdminRoom() {
       <header>
         <div className="content">
           <Link to="/">
-            <img src={logoImg} alt="letmeask" />
+          <img src={theme === 'dark' ? darkLogoImg : logoImg} alt="letmeask" />
           </Link>
           <div>
             <RoomCode code={roomId}/>
