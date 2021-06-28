@@ -32,13 +32,13 @@ export function AdminRoom() {
 
   const history = useHistory()
   
-  const { user } = useAuth()
+  // const { user } = useAuth()
 
-  useEffect(() => {
-    if (!user) {
-      history.push('/')
-    }
-  }, [user, history])
+  // useEffect(() => {
+  //   if (!user) {
+  //     history.push('/')
+  //   }
+  // }, [user, history])
 
   async function handleEndRoom() {
     await database.ref(`/rooms/${roomId}`).update({

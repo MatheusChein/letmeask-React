@@ -67,11 +67,6 @@ export function AuthContextProvider({ children }: AuthContextProviderProps) {
     }
   }
 
-  if (loading) {
-    return <p>Carregando...</p>
-  }
-
-
   return (
     <AuthContext.Provider value={{ user, signInWithGoogle }}>
       {children}
