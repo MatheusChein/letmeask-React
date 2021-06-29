@@ -61,10 +61,11 @@ Letmeask - App developed in React to help people select the best questions asked
 :heavy_check_mark: Modals;\
 :heavy_check_mark: Context API;\
 :heavy_check_mark: Custom React Hooks;\
+:heavy_check_mark: Responsiveness;
+
 
 ## 🚧 Coming Soon...
 
-:thought_balloon: Responsiveness\
 :thought_balloon: Toast messages
 
 ## :rocket: Technologies ##
