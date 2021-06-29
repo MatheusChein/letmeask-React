@@ -65,6 +65,7 @@ Letmeask - App developed in React to help people select the best questions asked
 ## 🚧 Coming Soon...
 
 :thought_balloon: Responsiveness\
+:thought_balloon: Toast messages\
 
 ## :rocket: Technologies ##
 
