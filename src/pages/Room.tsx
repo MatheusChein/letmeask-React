@@ -107,7 +107,7 @@ export function Room() {
           <Link to="/">
             <img src={theme === 'dark' ? darkLogoImg : logoImg} alt="letmeask" />
           </Link>
-          <div>
+          <div className='buttons'>
             <RoomCode code={roomId}/>
             {isUserAdmin && (
               <Button 

@@ -13,13 +13,13 @@
 
 .react-modal {
   width: 100%;
-  max-width: 590px;
-  height: 362px;
+  max-width: 36.875rem;
+  height: 22.625rem;
 
   position: relative;
   background: #f8f8f8;
 
-  border-radius: 8px;
+  border-radius: 0.5rem;
   
   display: flex;
   flex-direction: column;
@@ -27,9 +27,9 @@
   align-items: center;
 
   svg {
-    height: 48px;
-    width: 48px;
-    margin-bottom: 24px;
+    height: 3rem;
+    width: 3rem;
+    margin-bottom: 1.5rem;
 
     path {
     stroke: #E73F5D;
@@ -37,19 +37,36 @@
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-family: 'Poppins', sans-serif;
-    margin-bottom: 12px;
+    margin-bottom: 0.75rem;
   }
 
   p {
-    font: 400 16px 'Roboto', sans-serif;
+    font: 400 1rem 'Roboto', sans-serif;
     color: #737380;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
   }
 
   div {
     display: flex;
-    gap: 8px;
+    gap: 0.5rem;
   }
+}
+
+@media (max-width: 940px) {
+  .react-modal {
+    width: 90%;
+  }
+  
+}
+
+@media (max-width: 370px) {
+  .react-modal {
+    p {
+      text-align: center;
+      padding: 0 2rem;
+    }
+  }
+  
 }

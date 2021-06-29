@@ -97,7 +97,7 @@ export function AdminRoom() {
           <Link to="/">
           <img src={theme === 'dark' ? darkLogoImg : logoImg} alt="letmeask" />
           </Link>
-          <div>
+          <div className='buttons'>
             <RoomCode code={roomId}/>
             <Button 
               isOutlined
